@@ -21,6 +21,16 @@ today = dt.datetime.now()
 today_month = today.month
 today_day = today.day
 
+# Check today with birt data
+for person in birt_dict:
+    if person["month"] == today_month and person["day"] == today_day:
+        name = person["name"]
+        mail = person["email"]
+        letter_num = random.randint(1,3)
+        with open(f"letter_templates/letter_{letter_num}.txt") as letter:
+            tmp_letter = letter.read()
+        tmp_letter = tmp_letter.replace("[NAME]", name)
+
 
 # with smtplib.SMTP("smtp.gmail.com", port=587) as connection:
 #     connection.starttls()
